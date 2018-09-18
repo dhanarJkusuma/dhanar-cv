@@ -9,12 +9,12 @@ import (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+	tpl = template.Must(template.ParseGlob("/apps/projects/goprojects/src/cv-dhanar/templates/*.gohtml"))
 }
 
 func main() {
 
-	fs := http.FileServer(http.Dir("assets"))
+	fs := http.FileServer(http.Dir("/apps/projects/goprojects/src/cv-dhanar/assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	http.HandleFunc("/", handleIndex)
 	fmt.Println("[Portofolio App] Running ...")
